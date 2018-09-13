@@ -1,0 +1,10 @@
+Project Name: TCP Chat Application
+
+Member: 
+	1.	Dao Xuan Thuy	16110CL3	16110544
+	2.	Ngo Cong An	16110CL3	16110002
+
+Instructor: M.S Nguyen Dang Quang
+
+Time: Week 4 - Week 11, Semester 1, 2018-2019
+School: Ho Chi Minh University of Technology and Education
