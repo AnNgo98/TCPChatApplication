@@ -1,4 +1,4 @@
-package com.socket;
+package an.socket;
 
 import java.io.*;
 import javax.xml.parsers.DocumentBuilder;
@@ -16,18 +16,23 @@ public class Database {
     public Database(String filePath){
         this.filePath = filePath;
     }
-    
+    public static String getTagValue(String sTag, Element eElement) {
+    	NodeList nlList = eElement.getElementsByTagName(sTag).item(0).getChildNodes();
+            Node nValue = (Node) nlList.item(0);
+    	return nValue.getNodeValue();
+      } 
     public boolean userExists(String username){
         
         try{
-            File fXmlFile = new File(filePath);
+            File xmlFile = new File(filePath);
+            // khởi tạo đối tượng document chứa thông tin file xml từ filePath tạo ở trên
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
+            Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
             
-            NodeList nList = doc.getElementsByTagName("user");
-            
+            NodeList nList = doc.getElementsByTagName("user");// lấy thông tin của các user
+         // đọc thông tin từng thẻ
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -56,7 +61,7 @@ public class Database {
             Document doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
             
-            NodeList nList = doc.getElementsByTagName("user");
+            NodeList nList = doc.getElementsByTagName("user"); 
             
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
@@ -86,26 +91,26 @@ public class Database {
             Node data = doc.getFirstChild();
             
             Element newuser = doc.createElement("user");
-            Element newusername = doc.createElement("username"); newusername.setTextContent(username);
-            Element newpassword = doc.createElement("password"); newpassword.setTextContent(password);
+            Element newusername = doc.createElement("username"); 
+            newusername.setTextContent(username);
+            Element newpassword = doc.createElement("password");
+            newpassword.setTextContent(password);
             
-            newuser.appendChild(newusername); newuser.appendChild(newpassword); data.appendChild(newuser);
-            
+            newuser.appendChild(newusername); 
+            newuser.appendChild(newpassword);
+            data.appendChild(newuser);
+            // sử dụng TransformerFactory ghi nội dung vào thẻ xml
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
+            // ghi kết quả vào filePath
             StreamResult result = new StreamResult(new File(filePath));
             transformer.transform(source, result);
- 
 	   } 
            catch(Exception ex){
 		System.out.println("Exceptionmodify xml");
 	   }
 	}
     
-    public static String getTagValue(String sTag, Element eElement) {
-	NodeList nlList = eElement.getElementsByTagName(sTag).item(0).getChildNodes();
-        Node nValue = (Node) nlList.item(0);
-	return nValue.getNodeValue();
-  }
+   
 }
