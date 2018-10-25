@@ -10,15 +10,18 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
-import oracle.jrockit.jfr.JFR;
 
 public class ChatFrame extends javax.swing.JFrame {
 
-    public SocketClient client;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public SocketClient client;
     public int port;
     public String serverAddr, username, password;
     public Thread clientThread;
-    public DefaultListModel model;
+    public DefaultListModel<String> model;
     public File file;
     public String historyFile = "D:/History.xml";
     public HistoryFrame historyFrame;
@@ -35,7 +38,8 @@ public class ChatFrame extends javax.swing.JFrame {
         this.addWindowListener(new WindowListener() {
 
             @Override public void windowOpened(WindowEvent e) {}
-            @Override public void windowClosing(WindowEvent e) { try{ client.send(new Message("message", username, ".bye", "SERVER")); clientThread.stop();  }catch(Exception ex){} }
+            @SuppressWarnings("deprecation")
+			@Override public void windowClosing(WindowEvent e) { try{ client.send(new Message("message", username, ".bye", "SERVER")); clientThread.stop();  }catch(Exception ex){} }
             @Override public void windowClosed(WindowEvent e) {}
             @Override public void windowIconified(WindowEvent e) {}
             @Override public void windowDeiconified(WindowEvent e) {}
@@ -50,7 +54,7 @@ public class ChatFrame extends javax.swing.JFrame {
         return System.getProperty("os.name").startsWith("Windows");
     }
 
-    @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -68,7 +72,7 @@ public class ChatFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jList1 = new javax.swing.JList<String>();
         jLabel5 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
@@ -123,7 +127,7 @@ public class ChatFrame extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jList1.setModel((model = new DefaultListModel()));
+        jList1.setModel((model = new DefaultListModel<String>()));
         jScrollPane2.setViewportView(jList1);
 
         jLabel5.setText("Message : ");
@@ -306,7 +310,8 @@ public class ChatFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    @SuppressWarnings("deprecation")
+	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         username = jTextField3.getText();
         password = jPasswordField1.getText();
         
@@ -325,7 +330,8 @@ public class ChatFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    @SuppressWarnings("deprecation")
+	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         username = jTextField3.getText();
         password = jPasswordField1.getText();
         
@@ -358,7 +364,7 @@ public class ChatFrame extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
             long size = file.length();
             if(size < 120 * 1024 * 1024){
-                client.send(new Message("upload_req", username, file.getName(), jList1.getSelectedValue().toString()));
+			client.send(new Message("upload_req", username, file.getName(), jList1.getSelectedValue().toString()));
             }
             else{
                 jTextArea1.append("[Application > Me] : File is size too large\n");
@@ -421,7 +427,7 @@ public class ChatFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    public javax.swing.JList jList1;
+    public javax.swing.JList<String> jList1;
     public javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
