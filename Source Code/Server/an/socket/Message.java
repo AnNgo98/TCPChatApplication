@@ -2,12 +2,12 @@ package an.socket;
 
 import java.io.Serializable;
 
-public class Client implements Serializable
+public class Message implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	public String type,sender,content,recipient;
 	
-	public Client(String type, String sender, String content,String recipient)
+	public Message(String type, String sender, String content,String recipient)
 	{
 		this.type = type;
 		this.sender = sender;
