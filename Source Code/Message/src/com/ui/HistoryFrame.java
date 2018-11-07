@@ -4,6 +4,9 @@ import com.socket.History;
 
 public class HistoryFrame extends javax.swing.JFrame {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	public History hist;
 
@@ -17,6 +20,8 @@ public class HistoryFrame extends javax.swing.JFrame {
 		hist.FillTable(this);
 	}
 
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
 		jLabel1 = new javax.swing.JLabel();
@@ -31,7 +36,9 @@ public class HistoryFrame extends javax.swing.JFrame {
 		jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
 
 		}, new String[] { "Sender", "Message", "To", "Time" }) {
-
+			/**
+			 * 
+			 */
 			private static final long serialVersionUID = 1L;
 			@SuppressWarnings("rawtypes")
 			Class[] types = new Class[] { java.lang.String.class, java.lang.String.class, java.lang.String.class,
@@ -64,8 +71,17 @@ public class HistoryFrame extends javax.swing.JFrame {
 						.addContainerGap()));
 
 		pack();
+	}// </editor-fold>//GEN-END:initComponents
 
 	public static void main(String args[]) {
+		/* Set the Nimbus look and feel */
+		// <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+		// (optional) ">
+		/*
+		 * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+		 * look and feel. For details see
+		 * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+		 */
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
@@ -86,6 +102,9 @@ public class HistoryFrame extends javax.swing.JFrame {
 			java.util.logging.Logger.getLogger(HistoryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
 					ex);
 		}
+		// </editor-fold>
+
+		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new HistoryFrame().setVisible(true);
@@ -93,7 +112,9 @@ public class HistoryFrame extends javax.swing.JFrame {
 		});
 	}
 
+	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JScrollPane jScrollPane1;
 	public javax.swing.JTable jTable1;
+	// End of variables declaration//GEN-END:variables
 }

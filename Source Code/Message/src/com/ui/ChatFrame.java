@@ -13,6 +13,9 @@ import javax.swing.UIManager;
 
 public class ChatFrame extends javax.swing.JFrame {
 
+    /**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	public SocketClient client;
     public int port;
@@ -51,6 +54,8 @@ public class ChatFrame extends javax.swing.JFrame {
         return System.getProperty("os.name").startsWith("Windows");
     }
 
+    
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -99,7 +104,7 @@ public class ChatFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextField3.setText("XuanThuy");
+        jTextField3.setText("Anurag");
         jTextField3.setEnabled(false);
 
         jLabel3.setText("Password :");
@@ -118,7 +123,7 @@ public class ChatFrame extends javax.swing.JFrame {
         jPasswordField1.setEnabled(false);
 
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Consolas", 0, 12));
+        jTextArea1.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -287,8 +292,9 @@ public class ChatFrame extends javax.swing.JFrame {
         );
 
         pack();
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         serverAddr = jTextField1.getText(); port = Integer.parseInt(jTextField2.getText());
         
         if(!serverAddr.isEmpty() && !jTextField2.getText().isEmpty()){
@@ -302,19 +308,19 @@ public class ChatFrame extends javax.swing.JFrame {
                 jTextArea1.append("[Application > Me] : Server not found\n");
             }
         }
-    }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     @SuppressWarnings("deprecation")
-	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         username = jTextField3.getText();
         password = jPasswordField1.getText();
         
         if(!username.isEmpty() && !password.isEmpty()){
             client.send(new Message("login", username, password, "SERVER"));
         }
-    }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         String msg = jTextField4.getText();
         String target = jList1.getSelectedValue().toString();
         
@@ -322,19 +328,19 @@ public class ChatFrame extends javax.swing.JFrame {
             jTextField4.setText("");
             client.send(new Message("message", username, msg, target));
         }
-    }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     @SuppressWarnings("deprecation")
-	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         username = jTextField3.getText();
         password = jPasswordField1.getText();
         
         if(!username.isEmpty() && !password.isEmpty()){
             client.send(new Message("signup", username, password, "SERVER"));
         }
-    }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.showDialog(this, "Select File");
         file = fileChooser.getSelectedFile();
@@ -353,9 +359,9 @@ public class ChatFrame extends javax.swing.JFrame {
                 jTextField5.setText(str);
             }
         }
-    }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
             long size = file.length();
             if(size < 120 * 1024 * 1024){
 			client.send(new Message("upload_req", username, file.getName(), jList1.getSelectedValue().toString()));
@@ -363,9 +369,9 @@ public class ChatFrame extends javax.swing.JFrame {
             else{
                 jTextArea1.append("[Application > Me] : File is size too large\n");
             }
-    }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         JFileChooser jf = new JFileChooser();
         jf.showDialog(this, "Select File");
         
@@ -384,12 +390,12 @@ public class ChatFrame extends javax.swing.JFrame {
             historyFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
             historyFrame.setVisible(false);
         }
-    }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         historyFrame.setLocation(this.getLocation());
         historyFrame.setVisible(true);
-    }
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -405,7 +411,7 @@ public class ChatFrame extends javax.swing.JFrame {
             }
         });
     }
-    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButton1;
     public javax.swing.JButton jButton2;
     public javax.swing.JButton jButton3;
@@ -434,4 +440,5 @@ public class ChatFrame extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField4;
     public javax.swing.JTextField jTextField5;
     public javax.swing.JTextField jTextField6;
+    // End of variables declaration//GEN-END:variables
 }
