@@ -104,7 +104,7 @@ public class ChatFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextField3.setText("Anurag");
+        jTextField3.setText("XuanThuy");
         jTextField3.setEnabled(false);
 
         jLabel3.setText("Password :");
